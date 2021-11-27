@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
 
-  # Almost every application defines a route for the root path ("/") at the top of this file.
-  # root "articles#index"
+      post 'login', to: 'sessions#login', as: "login"
+      post 'refresh_token', to: 'sessions#refresh_token', as: "refresh_token"
+      delete 'logout', to: 'sessions#logout', as: "logout"
+
+      post 'forgot', to: 'passwords#forgot', as: "forgot_password"
+      post 'reset_password', to: 'passwords#reset', as: "reset_password"
+
+      resources :users
+      resources :roles
+    end
+  end
 end

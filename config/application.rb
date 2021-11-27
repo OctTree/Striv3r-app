@@ -22,7 +22,25 @@ Bundler.require(*Rails.groups)
 module Striv3r
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 6.1
+
+    config.middleware.use ActionDispatch::Flash
+    config.eager_load_paths << Rails.root.join('lib')
+
+    #CORS CONFIG
+    config.middleware.insert_before 0, Rack::Cors do
+      ALLOWED_CLIENTS = %i[localhost:3000 localhost:5000] + [ENV['CORS_CLIENTS']&.split(',')]
+
+      ALLOWED_CLIENTS.compact.each do |client|
+        allow do
+          origins client
+          resource '*',
+                   headers: :any,
+                   credentials: true,
+                   methods: :any
+        end
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
