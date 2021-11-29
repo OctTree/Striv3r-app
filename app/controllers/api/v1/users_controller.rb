@@ -1,5 +1,8 @@
 class Api::V1::UsersController < ApplicationController
 
+  include AuthorisationConcerns
+  include AuthorisationResponseConcerns
+
   before_action :authorize_request, except: [:create], raise: false
   before_action :set_user, only: [:update, :destroy, :show]
 

@@ -1,5 +1,8 @@
 class Api::V1::RolesController < ApplicationController
 
+  include AuthorisationConcerns
+  include AuthorisationResponseConcerns
+
   before_action :authorize_request, raise: false
   before_action :set_role, only: [:update, :destroy, :show]
 

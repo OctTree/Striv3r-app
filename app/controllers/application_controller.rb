@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
 
-  protect_from_forgery with: :null_session
-
   include AuthorisationConcerns
+  include AuthorisationResponseConcerns
+
+  protect_from_forgery with: :null_session
 
   prepend_before_action :set_credentials_header
 
