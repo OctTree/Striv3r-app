@@ -1,4 +1,4 @@
-class CreateRefreshTokens < ActiveRecord::Migration[7.0]
+class CreateRefreshTokens < ActiveRecord::Migration[6.1]
   def change
     create_table :refresh_tokens do |t|
       t.references :user, index: true
