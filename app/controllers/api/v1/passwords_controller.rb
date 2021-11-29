@@ -1,9 +1,5 @@
 class Api::V1::PasswordsController < ApplicationController
 
-  include AuthorisationConcerns
-  include AuthorisationResponseConcerns
-
-  skip_before_action :authorize_request, only: [:forgot, :reset]
 
   # POST /api/password/forgot
   def forgot
