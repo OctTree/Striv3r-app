@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_035143) do
+ActiveRecord::Schema.define(version: 2021_12_07_163340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 2021_11_27_035143) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_blacklisted_tokens_on_user_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "days_per_week"
+    t.integer "minutes"
+    t.string "day_on_week"
+    t.string "time_of_day"
+    t.text "goals"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
   create_table "refresh_tokens", force: :cascade do |t|

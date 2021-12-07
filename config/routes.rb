@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       resources :users
       resources :roles
+      resources :plans
     end
   end
 end
