@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_163340) do
+ActiveRecord::Schema.define(version: 2021_12_09_083244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 2021_12_07_163340) do
     t.bigint "user_id"
     t.integer "days_per_week"
     t.integer "minutes"
-    t.string "day_on_week"
-    t.string "time_of_day"
     t.text "goals"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "day_on_week"
+    t.integer "time_of_day"
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
