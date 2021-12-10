@@ -19,8 +19,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @message = "Successfully created"
-      render layout: 'layouts/api'
+      create_access_refresh_token(@user)
     else
       error_json_response @user.errors.full_messages, :bad_request
     end
