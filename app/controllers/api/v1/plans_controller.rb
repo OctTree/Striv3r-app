@@ -46,6 +46,6 @@ class Api::V1::PlansController < ApplicationController
   end
 
   def plans_params
-    params.require(:plan).permit(:days_per_week, :minutes, :day_on_week, :time_of_day, :goals)
+    params.require(:plan).permit(:days_per_week, :minutes, :time_of_day, :goals, day_on_week: [])
   end
 end
