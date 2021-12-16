@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :blacklisted_tokens, dependent: :destroy
   has_many :refresh_tokens, dependent: :destroy
   has_many :plans, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
   #================================= Callbacks =================================
 
