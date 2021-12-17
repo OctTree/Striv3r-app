@@ -56,3 +56,11 @@ gem 'rack-cors'
 
 # For Json web token generation
 gem 'jwt'
+
+# Admin User
+gem 'activeadmin'
+
+gem 'sass-rails'
+
+# Background Jobs
+gem 'sidekiq'

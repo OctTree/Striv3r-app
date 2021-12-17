@@ -12,4 +12,14 @@ class Plan < ApplicationRecord
 
   enum time_of_day: ["morning", "noon", "evening"]
   enum activity_type: ["run", "walk", "workout", "journal", "musical"]
+
+  #======================================= Callbacks ==================================================================
+
+  after_create :send_email
+
+  #======================================= Methods ===================================================================
+
+  def send_email
+    PlanMailer.send_plan_email(id).deliver_later
+  end
 end
