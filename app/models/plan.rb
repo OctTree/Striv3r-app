@@ -20,6 +20,6 @@ class Plan < ApplicationRecord
   #======================================= Methods ===================================================================
 
   def send_email
-    PlanMailer.send_plan_email(id).deliver_later
+    PlanMailer.send_plan_email(id).deliver_now
   end
 end
