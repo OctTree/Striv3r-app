@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :roles
       resources :plans
       resources :activities
+      resources :activity_plans, only: [:index]
     end
   end
 end
