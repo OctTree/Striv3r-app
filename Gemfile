@@ -64,3 +64,7 @@ gem 'sass-rails'
 
 # Background Jobs
 gem 'sidekiq'
+
+gem 'jquery-rails'
+
+gem 'turbolinks'
