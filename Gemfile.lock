@@ -232,6 +232,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    week_of_month (1.2.6)
     zeitwerk (2.5.1)
 
 PLATFORMS
@@ -255,6 +256,7 @@ DEPENDENCIES
   sidekiq
   turbolinks
   tzinfo-data
+  week_of_month
 
 RUBY VERSION
    ruby 3.0.2p107

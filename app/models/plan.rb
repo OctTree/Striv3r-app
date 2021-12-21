@@ -16,10 +16,18 @@ class Plan < ApplicationRecord
   #======================================= Callbacks ==================================================================
 
   after_create :send_email
+  after_create :create_activity_plan
 
   #======================================= Methods ===================================================================
 
   def send_email
     PlanMailer.send_plan_email(id).deliver_now
+  end
+
+  def create_activity_plan
+    1.upto(days_per_week) do
+      ActivityPlan.create(user_id: user_id, activity_name: activity_type, week: "week #{Date.current.week_of_month}",
+                          time: minutes, frequency: frequency_days, activity_at: Date.current)
+    end
   end
 end

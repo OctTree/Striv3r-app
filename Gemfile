@@ -68,3 +68,5 @@ gem 'sidekiq'
 gem 'jquery-rails'
 
 gem 'turbolinks'
+
+gem 'week_of_month'

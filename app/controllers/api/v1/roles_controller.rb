@@ -1,6 +1,5 @@
 class Api::V1::RolesController < ApplicationController
 
-  include AuthorisationConcerns
   include AuthorisationResponseConcerns
 
   before_action :authorize_request, raise: false
