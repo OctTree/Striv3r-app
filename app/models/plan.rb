@@ -22,6 +22,7 @@ class Plan < ApplicationRecord
 
   def send_email
     PlanMailer.send_plan_email(id).deliver_now
+    PlanMailer.send_plan_email_to_admin(id).deliver_now
   end
 
   def create_activity_plan
