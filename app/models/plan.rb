@@ -28,7 +28,7 @@ class Plan < ApplicationRecord
   def create_activity_plan
     1.upto(days_per_week) do
       ActivityPlan.create(user_id: user_id, activity_name: activity_type, week: "week #{Date.current.week_of_month}",
-                          time: minutes, frequency: frequency_days, activity_at: Date.current)
+                          time: minutes, frequency: frequency_days, activity_at: Date.current, frequency_days: frequency_days, frequency_minutes: frequency_minutes)
     end
   end
 end
