@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :activity_plans, dependent: :destroy
 
+  #=================================== Nested Attributes ======================
+
+  accepts_nested_attributes_for :activity_plans
+
   #================================= Callbacks =================================
 
   before_create :set_role, if: -> { role_id.blank? }

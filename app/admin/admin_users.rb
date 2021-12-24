@@ -29,9 +29,6 @@ ActiveAdmin.register User do
             "<a href='/admin/activity_plans/#{activity_plan.id}/approve?activity_plan[status]=approved' data-method='put'>Approve</a>".html_safe
           end
           column do |activity_plan|
-            "<a href='/admin/activity_plans/#{activity_plan.id}/edit'>Edit</a>".html_safe
-          end
-          column do |activity_plan|
             "<a href='/admin/activity_plans/#{activity_plan.id}/' data-method='delete'>Delete</a>".html_safe
           end
         end
@@ -50,13 +47,24 @@ ActiveAdmin.register User do
   filter :sign_in_count
   filter :created_at
 
-  form do |f|
-    f.inputs do
-      f.input :email
-      f.input :password
-      f.input :password_confirmation
+  form do |form|
+    form.inputs do
+      form.input :name
+      form.input :email
     end
-    f.actions
+    span class: "has-one" do
+      form.has_many :activity_plans, class: 'has_one' do |f|
+        f.input :activity_name, required: true
+        f.input :week, required: true
+        f.input :time, required: true
+        f.input :frequency
+        f.input :activity_at
+        f.input :status
+        f.input :frequency_days
+        f.input :frequency_minutes
+      end
+    end
+    form.actions
   end
 
 end
