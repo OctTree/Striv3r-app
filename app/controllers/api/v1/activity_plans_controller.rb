@@ -24,6 +24,6 @@ class Api::V1::ActivityPlansController < ApplicationController
   end
 
   def activity_plans_params
-    params.require(:activity).permit( :time_spent, :remaining_time)
+    params.require(:activity_plan).permit( :time_spent, :remaining_time)
   end
 end
