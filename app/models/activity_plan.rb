@@ -6,7 +6,7 @@ class ActivityPlan < ApplicationRecord
 
   #===================================== Enum =========================================================================
 
-  enum week: ["week 1", "week 2", "week 3", "week 4"]
+  enum week: ["week 1", "week 2", "week 3", "week 4", "week 5"]
   enum status: ["unapproved", "approved"]
 
   #===================================== Callback ====================================================================
