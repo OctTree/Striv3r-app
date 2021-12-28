@@ -11,7 +11,7 @@ class ActivityPlan < ApplicationRecord
 
   #===================================== Callback ====================================================================
 
-  before_save :set_remaining_time
+  before_create :set_remaining_time
 
   #=================================== Methods ======================================================================
 
