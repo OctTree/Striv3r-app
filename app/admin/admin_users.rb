@@ -60,8 +60,6 @@ ActiveAdmin.register User do
         f.input :frequency
         f.input :activity_at
         f.input :status
-        f.input :frequency_days
-        f.input :frequency_minutes
       end
     end
     form.actions
