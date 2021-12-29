@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :name, activity_plans_attributes: [ :id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
+                                                           'activity_at(3i)', :status ]
 
   index do
     selectable_column
@@ -16,7 +17,10 @@ ActiveAdmin.register User do
       row :send_email do
         "<a href='/admin/users/#{user.id}/send_email'>Send Email</a>".html_safe
       end
-      panel "Activity Plan" do
+      row :approve_all do
+        "<a href='/admin/users/#{user.id}/approve_all' data-method='put'>Approve all</a>".html_safe
+      end
+      panel 'Activity Plan' do
         activity_plans = user.activity_plans
         table_for activity_plans do
           column :activity_name
@@ -39,7 +43,13 @@ ActiveAdmin.register User do
   member_action :send_email, method: :get do
     user = User.find(params[:id])
     PlanMailer.send_customized_plan_email(user.id).deliver_now
-    redirect_to admin_user_path(user), notice: "Email sent Successfully."
+    redirect_to admin_user_path(user), notice: 'Email sent Successfully.'
+  end
+
+  member_action :approve_all, method: :put do
+    user = User.find(params[:id])
+    user.activity_plans.update_all(status: 'approved')
+    redirect_to admin_user_path(user), notice: 'Approved Successfully.'
   end
 
   filter :email
@@ -52,7 +62,7 @@ ActiveAdmin.register User do
       form.input :name
       form.input :email
     end
-    span class: "has-one" do
+    span class: 'has-one' do
       form.has_many :activity_plans, class: 'has_one' do |f|
         f.input :activity_name, required: true
         f.input :week, required: true
