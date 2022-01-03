@@ -27,10 +27,10 @@ class Plan < ApplicationRecord
   def create_activity_plan
     1.upto(days_per_week) do
       activity_type.each do |activity_type|
-        ActivityPlan.create(user_id: user_id, activity_name: activity_type, week: "week #{Date.current.cweek/Date.current.month}",
+        1.upto(4) do |week|
+        ActivityPlan.create(user_id: user_id, activity_name: activity_type, week: "week #{week}",
                             time: minutes, frequency: frequency_days, activity_at: Date.current, frequency_days: frequency_days, frequency_minutes: frequency_minutes)
-        ActivityPlan.create(user_id: user_id, activity_name: "meditate", week: "week #{Date.current.cweek/Date.current.month}",
-                            time: minutes, frequency: frequency_days, activity_at: Date.current, frequency_days: frequency_days, frequency_minutes: frequency_minutes)
+        end
       end
     end
   end
