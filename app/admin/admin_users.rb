@@ -64,7 +64,7 @@ ActiveAdmin.register User do
     end
     span class: 'has-one' do
       form.has_many :activity_plans, class: 'has_one' do |f|
-        f.input :activity_name, required: true
+        f.input :activity_name, as: :select, collection: ["meditate", "run", "walk", "musical", "workout", "journal"], include_blank: "Select Activity Name"
         f.input :week, required: true
         f.input :time, required: true
         f.input :frequency
