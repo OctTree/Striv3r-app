@@ -27,7 +27,7 @@ ActiveAdmin.register User do
           column :week
           column :time
           column :frequency
-          column :activity_at
+          column :start_date
           column :status
           column do |activity_plan|
             "<a href='/admin/activity_plans/#{activity_plan.id}/approve?activity_plan[status]=approved' data-method='put'>Approve</a>".html_safe
