@@ -68,7 +68,7 @@ ActiveAdmin.register User do
         f.input :week, required: true
         f.input :time, required: true
         f.input :frequency
-        f.input :activity_at
+        f.input :activity_at, label: "Start Date"
         f.input :status
       end
     end
