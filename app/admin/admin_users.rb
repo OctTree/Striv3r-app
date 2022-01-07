@@ -14,6 +14,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
+      row :referral_code
       row :created_at
       row :send_email do
         "<a href='/admin/users/#{user.id}/send_email'>Send Email</a>".html_safe
