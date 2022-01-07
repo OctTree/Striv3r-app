@@ -23,10 +23,15 @@ class User < ApplicationRecord
   #================================= Callbacks =================================
 
   before_create :set_role, if: -> { role_id.blank? }
+  before_create :set_referral_code
 
   #================================= Methods ====================================
 
   def set_role
     self.role = Role.find_by(name: "user")
+  end
+
+  def set_referral_code
+    self.referral_code = SecureRandom.hex.first(5)
   end
 end

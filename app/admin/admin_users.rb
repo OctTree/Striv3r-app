@@ -14,6 +14,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
+      row :created_at
       row :send_email do
         "<a href='/admin/users/#{user.id}/send_email'>Send Email</a>".html_safe
       end
@@ -63,6 +64,8 @@ ActiveAdmin.register User do
     form.inputs do
       form.input :name
       form.input :email
+      form.input :point_balance
+      form.input :total_point_earned
     end
     span class: 'has-one' do
       form.has_many :activity_plans, class: 'has_one' do |f|
