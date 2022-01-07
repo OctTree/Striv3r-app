@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :name, activity_plans_attributes: [ :id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
+  permit_params :email, :name, :point_balance, :total_point_earned, activity_plans_attributes: [ :id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
                                                            'activity_at(3i)', :status ]
 
   index do
