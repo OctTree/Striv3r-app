@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :roles
       resources :plans
       resources :activities
+      resources :redeems, only: [:create]
       resources :activity_plans, only: [:index, :show, :update]
     end
   end
