@@ -19,4 +19,7 @@ Rails.application.routes.draw do
       resources :activity_plans, only: [:index, :show, :update]
     end
   end
+
+  resources :welcome
+  root "welcome#index"
 end

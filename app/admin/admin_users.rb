@@ -15,6 +15,8 @@ ActiveAdmin.register User do
       row :name
       row :email
       row :referral_code
+      row :point_balance
+      row :total_point_earned
       row :created_at
       row :send_email do
         "<a href='/admin/users/#{user.id}/send_email'>Send Email</a>".html_safe
@@ -41,6 +43,16 @@ ActiveAdmin.register User do
           end
         end
       end
+
+      panel 'Activity Log' do
+        activity_logs = user.activity_logs
+        table_for activity_logs do
+          column :name
+          column :date_at
+          column :minutes
+        end
+      end
+
     end
   end
 
