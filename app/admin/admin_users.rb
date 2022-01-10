@@ -6,6 +6,12 @@ ActiveAdmin.register User do
     selectable_column
     column :name
     column :email
+    column :point_balance
+    column :total_point_earned
+    column :referral_code
+    column "Activity count" do |user|
+      user.activity_plans.size
+    end
     column :created_at
     actions
   end
