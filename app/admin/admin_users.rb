@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :name, :point_balance, :total_point_earned, activity_plans_attributes: [ :id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
+  permit_params :email, :name, :active, :point_balance, :total_point_earned, activity_plans_attributes: [ :id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
                                                            'activity_at(3i)', :status ]
 
   index do
@@ -9,8 +9,11 @@ ActiveAdmin.register User do
     column :point_balance
     column :total_point_earned
     column :referral_code
-    column "Activity count" do |user|
+    column 'Activity count' do |user|
       user.activity_plans.size
+    end
+    column 'Status' do |user|
+      user.active ? 'Yes' : 'No'
     end
     column :created_at
     actions
@@ -85,14 +88,15 @@ ActiveAdmin.register User do
       form.input :email
       form.input :point_balance
       form.input :total_point_earned
+      form.input :active
     end
     span class: 'has-one' do
       form.has_many :activity_plans, class: 'has_one' do |f|
-        f.input :activity_name, as: :select, collection: ["meditate", "run", "walk", "musical", "workout", "journal"], include_blank: "Select Activity Name"
+        f.input :activity_name, as: :select, collection: ['meditate', 'run', 'walk', 'musical', 'workout', 'journal'], include_blank: 'Select Activity Name'
         f.input :week, required: true
         f.input :time, required: true
         f.input :frequency
-        f.input :activity_at, label: "Start Date"
+        f.input :activity_at, label: 'Start Date'
         f.input :status
       end
     end

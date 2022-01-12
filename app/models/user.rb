@@ -26,6 +26,7 @@ class User < ApplicationRecord
 
   before_create :set_role, if: -> { role_id.blank? }
   before_create :set_referral_code
+  after_update :send_email_to_admin
 
   #================================= Methods ====================================
 
@@ -35,5 +36,9 @@ class User < ApplicationRecord
 
   def set_referral_code
     self.referral_code = SecureRandom.hex.first(5)
+  end
+
+  def send_email_to_admin
+    UserMailer.send_email(id).deliver_now if saved_change_to_active&.second == false
   end
 end
