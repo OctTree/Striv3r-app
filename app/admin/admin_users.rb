@@ -12,7 +12,7 @@ ActiveAdmin.register User do
     column 'Activity count' do |user|
       user.activity_plans.size
     end
-    column 'Status' do |user|
+    column 'Active' do |user|
       user.active ? 'Yes' : 'No'
     end
     column :created_at

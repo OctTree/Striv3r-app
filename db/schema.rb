@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_154450) do
+ActiveRecord::Schema.define(version: 2022_01_13_125116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_154450) do
     t.integer "time_spent", default: 0
     t.integer "remaining_time", default: 0
     t.integer "frequency_finished", default: 0
+    t.boolean "completed", default: false
     t.index ["user_id"], name: "index_activity_plans_on_user_id"
   end
 
