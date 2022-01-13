@@ -9,8 +9,11 @@ ActiveAdmin.register User do
     column :point_balance
     column :total_point_earned
     column :referral_code
+    column 'Referred By' do |user|
+      user.referral
+    end
     column 'Activity count' do |user|
-      user.activity_plans.size
+      user.activity_plans.where(completed: true).size
     end
     column 'Active' do |user|
       user.active ? 'Yes' : 'No'
