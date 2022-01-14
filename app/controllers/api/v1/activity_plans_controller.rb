@@ -10,7 +10,7 @@ class Api::V1::ActivityPlansController < ApplicationController
 
   def update
     if @activity_plan.update(activity_plans_params)
-      ActivityLog.create(user_id: current_user.id, minutes: @activity.time_spent, date_at: DateTime.current, name: @activity_plan.activity_name) if @activity_plan.completed
+      ActivityLog.create(user_id: current_user.id, minutes: @activity_plan.time_spent, date_at: DateTime.current, name: @activity_plan.activity_name) if @activity_plan.completed
       @message = 'Successfully updated'
       render layout: 'layouts/api'
     else
