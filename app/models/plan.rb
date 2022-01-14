@@ -36,7 +36,7 @@ class Plan < ApplicationRecord
 
       activity_type.each do |activity_type|
         ActivityPlan.create(user_id: user_id, activity_name: activity_type, week: "week #{week}",
-                            time: minutes, frequency: frequency_days, activity_at: week_date, frequency_days: frequency_days, frequency_minutes: frequency_minutes)
+                            time: frequency_minutes, frequency: frequency_days, activity_at: week_date, frequency_days: frequency_days, frequency_minutes: frequency_minutes)
       end
 
     end
