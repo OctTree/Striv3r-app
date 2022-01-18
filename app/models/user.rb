@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :activity_plans, dependent: :destroy
   has_many :point_redeems, dependent: :destroy
   has_many :activity_logs, dependent: :destroy
+  has_one :subscription, dependent: :destroy
 
   #=================================== Nested Attributes ======================
 
