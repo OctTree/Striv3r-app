@@ -1,4 +1,4 @@
-class Api::V1::PlansController < ApplicationController
+class Api::V1::SubscriptionsController < ApplicationController
 
   include AuthorisationResponseConcerns
   before_action :authorize_request

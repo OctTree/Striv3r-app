@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :activities
       resources :redeems, only: [:create]
       resources :activity_plans, only: [:index, :show, :update]
+      resources :subscriptions, only: [:create]
     end
   end
 
