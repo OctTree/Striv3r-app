@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_165854) do
+ActiveRecord::Schema.define(version: 2022_01_19_145420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(version: 2022_01_18_165854) do
     t.integer "subscription_type"
     t.float "amount"
     t.string "last_four_digits"
-    t.string "expiry"
     t.string "stripe_card_id"
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
@@ -156,6 +155,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_165854) do
     t.integer "point_balance"
     t.integer "total_point_earned"
     t.boolean "active", default: true
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
