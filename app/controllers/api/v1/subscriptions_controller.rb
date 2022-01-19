@@ -5,7 +5,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
 
   def create
-    @subscription = current_user.subscription.build(amount: params[:amount], subscription_type: params[:subscription_type],
+    @subscription = current_user.build_subscription(amount: params[:amount], subscription_type: params[:subscription_type],
                                                     token: params[:token], last_four_digits: params[:last_four_digits])
 
     if @subscription.save
