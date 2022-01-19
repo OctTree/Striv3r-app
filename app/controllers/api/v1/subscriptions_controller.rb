@@ -10,7 +10,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
     if @subscription.save
       response = Stripe::Customer.create(email: current_user.email, card: params[:token])
-      current_user.update(stripe_customer_id: response.id)
+      current_user.update(stripe_customer_id: response.id, referral_code: params[:referral_code])
       @message = "Successfully created"
       render layout: 'layouts/api'
     else
