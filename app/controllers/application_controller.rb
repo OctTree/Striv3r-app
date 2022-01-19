@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   if Rails.env.production?
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from AuthorisationError, with: :render_403
-    rescue_from Exception, with: :render_500
+    # rescue_from Exception, with: :render_500
   end
 
   def send_json_response(status, errors, data, status_code)
