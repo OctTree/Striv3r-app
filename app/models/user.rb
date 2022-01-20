@@ -51,5 +51,7 @@ class User < ApplicationRecord
     plans.last.activity_type.each do |name|
       plan_details.push({name: name, days: plans.last.frequency_days, time: plans.last.frequency_minutes})
     end
+
+    plan_details
   end
 end
