@@ -42,4 +42,14 @@ class User < ApplicationRecord
   def send_email_to_admin
     UserMailer.send_email(id).deliver_now if saved_change_to_active&.second == false
   end
+
+  def get_plan_details
+    plan_details = []
+
+    plan_details.push({name: "meditate", days: plans.last.days_per_week, time: plans.last.minutes})
+
+    plans.last.activity_type.each do |name|
+      plan_details.push({name: name, days: plans.last.frequency_days, time: plans.last.frequency_minutes})
+    end
+  end
 end

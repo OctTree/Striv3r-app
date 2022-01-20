@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
-  permit_params :email, :name, :active, :point_balance, :total_point_earned, activity_plans_attributes: [ :id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
-                                                           'activity_at(3i)', :status ]
+  permit_params :email, :name, :active, :point_balance, :total_point_earned, activity_plans_attributes: [:id, :activity_name, :time, :week, :frequency, 'activity_at(1i)', 'activity_at(2i)',
+                                                                                                         'activity_at(3i)', :status]
 
   index do
     selectable_column
@@ -35,6 +35,13 @@ ActiveAdmin.register User do
       end
       row :approve_all do
         "<a href='/admin/users/#{user.id}/approve_all' data-method='put'>Approve all</a>".html_safe
+      end
+      panel 'Plan' do
+        user.plans.last.activity_type.push("meditate").each do |activity_type|
+          table_for "Plan" do
+            column "My goal is to #{activity_type} #{activity_type == "meditate" ? user.plans.last.days_per_week : user.plans.last.frequency_days } / week for #{activity_type == "meditate" ? user.plans.last.minutes : user.plans.last.frequency_minutes } / session"
+          end
+        end
       end
       panel 'Activity Plan' do
         activity_plans = user.activity_plans
