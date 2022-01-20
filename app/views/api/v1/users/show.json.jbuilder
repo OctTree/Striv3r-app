@@ -6,5 +6,5 @@ json.plans do
 end
 
 json.plan_details do
-  current_user.get_plan_details
+  @user.get_plan_details
 end
