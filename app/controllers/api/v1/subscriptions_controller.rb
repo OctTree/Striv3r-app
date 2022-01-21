@@ -10,7 +10,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
     if @subscription.save
       response = Stripe::Customer.create(email: current_user.email, card: params[:token])
-      current_user.update(stripe_customer_id: response.id, referral_code: params[:referral_code])
+      current_user.update(stripe_customer_id: response.id, referral: params[:referral_code])
       success_json_response({message: "Successfully created."})
     else
       error_json_response @subscription.errors.full_messages, :bad_request
