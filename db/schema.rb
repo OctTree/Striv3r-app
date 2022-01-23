@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_145420) do
+ActiveRecord::Schema.define(version: 2022_01_23_113042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,19 @@ ActiveRecord::Schema.define(version: 2022_01_19_145420) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "stripe_details", force: :cascade do |t|
+    t.string "stripe_price_id"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stripe_products", force: :cascade do |t|
+    t.string "stripe_product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "subscription_type"
@@ -156,6 +169,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_145420) do
     t.integer "total_point_earned"
     t.boolean "active", default: true
     t.string "stripe_customer_id"
+    t.string "stripe_subscription_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
