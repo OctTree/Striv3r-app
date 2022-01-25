@@ -35,7 +35,7 @@ class Api::V1::SubscriptionsController < ApplicationController
                    StripeProduct.first.stripe_product_id
                  end
 
-    Rails.logger.info product_id, "product_id"
+    #    Rails.logger.info product_id, "product_id"
 
     price_id = unless details.nil?
                  if subscription_type == "other"
