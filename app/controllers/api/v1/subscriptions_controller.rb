@@ -37,19 +37,15 @@ class Api::V1::SubscriptionsController < ApplicationController
 
     #    Rails.logger.info product_id, "product_id"
 
-    price_id = unless details.nil?
+    price_id = if details.nil?
                  if subscription_type == "other"
-                   price = Stripe::Price.create({ unit_amount: amount, currency: "usd", recurring: { 'interval': 'month' }, product_id: product_id })
+                   price = Stripe::Price.create({ unit_amount: amount.to_i, currency: "usd", recurring: { 'interval': 'month' }, product: product_id })
                    StripeDetail.create(price: amount, stripe_price_id: price.id)
-                   Rails.logger.info product_id
-                   Rails.logger.info price
                    price
                  else
-                   price = Stripe::Price.create({ unit_amount: subscription_type, currency: "usd", recurring: { 'interval': 'month' }, product_id: product_id })
+                   price = Stripe::Price.create({ unit_amount: subscription_type.to_i, currency: "usd", recurring: { 'interval': 'month' }, product: product_id })
                    StripeDetail.create(price: subscription_type, stripe_price_id: price.id)
                    price
-                   Rails.logger.info product_id
-                   Rails.logger.info price
                  end
                end
 
