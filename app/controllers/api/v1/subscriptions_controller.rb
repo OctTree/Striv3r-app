@@ -10,7 +10,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     if @subscription.save
       response = Stripe::Customer.create(email: current_user.email, card: params[:token])
       price = create_stripe_price(params[:subscription_type], params[:amount])
-      res = Stripe::Subscription.create({  customer: response.id, items: [{ price: price }] })
+      res = Stripe::Subscription.create({ customer: response.id, items: [{ price: price }] })
       current_user.update(stripe_customer_id: response.id, referral: params[:referral_code], stripe_subscription_id: res.id)
       success_json_response({ message: "Successfully created." })
     else
@@ -29,17 +29,16 @@ class Api::V1::SubscriptionsController < ApplicationController
                    StripeProduct.first.stripe_product_id
                  end
 
-    if details.nil?
-                 if subscription_type == "other"
-                   price = Stripe::Price.create({ unit_amount: amount, currency: "usd", recurring: { 'interval': 'month' }, product_id: product_id })
-                   StripeDetail.create(price: amount, stripe_price_id: price.id)
-                   price.id
-                 else
-                   details.stripe_price_id
-                 end
-               end
-    
-    
+    unless details.nil?
+      if subscription_type == "other"
+        price = Stripe::Price.create({ unit_amount: amount, currency: "usd", recurring: { 'interval': 'month' }, product_id: product_id })
+        StripeDetail.create(price: amount, stripe_price_id: price.id)
+        price.id
+      else
+        details.stripe_price_id
+      end
+    end
+
   end
 
   private
