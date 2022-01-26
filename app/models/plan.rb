@@ -6,7 +6,7 @@ class Plan < ApplicationRecord
 
   #======================================= Validations ================================================================
 
-  validates_presence_of :days_per_week, :minutes, :day_on_week, :goals
+  validates_presence_of :days_per_week, :minutes, :day_on_week
 
   #===================================== Enum =========================================================================
 
