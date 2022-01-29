@@ -2,9 +2,9 @@ json.id plan.id
 json.user_id plan.user_id
 json.days_per_week plan.days_per_week
 json.minutes plan.minutes
-json.day_on_week JSON.parse(plan.day_on_week)
+json.day_on_week plan.day_on_week
 json.time_on_day plan.time_of_day
-json.activity_type JSON.parse(plan.activity_type)
+json.activity_type plan.activity_type
 json.frequency_days plan.frequency_days
 json.frequency_minutes plan.frequency_minutes
 json.goals plan.goals
