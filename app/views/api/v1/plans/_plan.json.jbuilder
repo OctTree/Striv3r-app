@@ -7,3 +7,4 @@ json.time_on_day plan.time_of_day
 json.activity_type plan.activity_type
 json.frequency_days plan.frequency_days
 json.frequency_minutes plan.frequency_minutes
+json.goals plan.goals
