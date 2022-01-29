@@ -29,17 +29,6 @@ ActiveRecord::Schema.define(version: 2022_01_23_113042) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
-  create_table "activities", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "activity_name"
-    t.datetime "performed_at"
-    t.string "time_spent"
-    t.string "remaining_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_activities_on_user_id"
-  end
-
   create_table "activity_logs", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"

@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :blacklisted_tokens, dependent: :destroy
   has_many :refresh_tokens, dependent: :destroy
   has_many :plans, dependent: :destroy
-  has_many :activities, dependent: :destroy
   has_many :activity_plans, dependent: :destroy
   has_many :point_redeems, dependent: :destroy
   has_many :activity_logs, dependent: :destroy
