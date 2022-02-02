@@ -29,11 +29,11 @@ module Striv3r
 
     #CORS CONFIG
     config.middleware.insert_before 0, Rack::Cors do
-      ALLOWED_CLIENTS = %i[localhost:3000 localhost:5000 striv3.herokuapp.com striv3r-prod.herokuapp.com striv3r.com] + [ENV['CORS_CLIENTS']&.split(',')]
+      ALLOWED_CLIENTS = %i[localhost:3000 localhost:5000 striv3.herokuapp.com striv3r-prod.herokuapp.com striv3r] + [ENV['CORS_CLIENTS']&.split(',')]
 
       ALLOWED_CLIENTS.compact.each do |client|
         allow do
-          origins client
+          origins "*"
           resource '*',
                    headers: :any,
                    credentials: true,
