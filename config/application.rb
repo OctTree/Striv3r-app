@@ -36,7 +36,7 @@ module Striv3r
           origins "*"
           resource '*',
                    headers: :any,
-                   credentials: true,
+                   credentials: false,
                    methods: :any
         end
       end
