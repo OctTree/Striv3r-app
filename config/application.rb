@@ -33,10 +33,10 @@ module Striv3r
 
       ALLOWED_CLIENTS.compact.each do |client|
         allow do
-          origins "*"
+          origins client
           resource '*',
                    headers: :any,
-                   credentials: false,
+                   credentials: true,
                    methods: :any
         end
       end
