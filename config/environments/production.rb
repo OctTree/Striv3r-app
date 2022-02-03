@@ -116,5 +116,4 @@ Rails.application.configure do
     password: ENV['SENDGRID_PASSWORD']
   }
 
-  config.force_ssl = true
 end
